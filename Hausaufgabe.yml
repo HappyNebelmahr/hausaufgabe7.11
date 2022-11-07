@@ -1,0 +1,11 @@
+
+
+hosts: 'myHost'
+remote_user: 'azureuser'
+vars_files:
+     - vars.yml
+vars:
+     ansible_ssh_private_key_file: 'C:\Users\Admin\Downloads\vm5_key.pem'
+tasks:
+     - name: Echo a hello message
+       command: echo hello
