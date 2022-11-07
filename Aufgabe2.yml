@@ -1,0 +1,27 @@
+hosts: all
+remote_user: 'azureuser'
+
+vars:
+     ansible_user: 'azureuser'
+     ansible_ssh_private_key_file: 'C:\Users\Admin\Downloads\vm5_key.pem'
+tasks:
+    - name: Gruppe erstellen
+      ansible.builtin.group:
+       name: gruppeA
+       state: present
+       gid: 12345
+    - name: Gruppe 2 erstellen
+      ansible.builtin.group:
+       name: gruppeB
+       state: present
+       gid: 54321
+    - name: person erstellen
+      ansible.builtin.user:
+        name: user2
+        uid: 12121
+        groups: gruppeA,gruppeB
+    - name: person löschen
+      ansible.builtin.user:
+       name: user2
+       state: absent
+       remove: yes

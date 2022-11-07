@@ -1,11 +1,15 @@
 
 
-hosts: 'myHost'
+hosts: all
 remote_user: 'azureuser'
-vars_files:
-     - vars.yml
+
 vars:
+     ansible_user: 'azureuser'
      ansible_ssh_private_key_file: 'C:\Users\Admin\Downloads\vm5_key.pem'
 tasks:
-     - name: Echo a hello message
-       command: echo hello
+     - name: install vim
+       command: sudo apt install vim
+     - name: download Chrome 
+       get_url:  
+       url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb.
+          
